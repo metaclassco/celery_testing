@@ -1,0 +1,2 @@
+# Run (each minute) python script to check that there are active Celery workers.
+* * * * * /usr/local/bin/python /app/worker_test.py
