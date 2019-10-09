@@ -21,5 +21,6 @@ RUN chmod 0755 /config/project_env.sh
 # Install requirements
 RUN pip install -r requirements.txt
 
+WORKDIR /app
 RUN chmod +x /config/entrypoint.sh
 CMD ["/config/entrypoint.sh"]
