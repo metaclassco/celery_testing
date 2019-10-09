@@ -1,2 +1,2 @@
 # Run (each minute) python script to check that there are active Celery workers.
-* * * * * /usr/local/bin/python /app/workers_heartbeat.py
+* * * * * . /config/project_env.sh; /usr/local/bin/python /app/workers_heartbeat.py >> /logs/cron.log 2>&1

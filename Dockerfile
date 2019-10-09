@@ -7,22 +7,19 @@ RUN apt-get update && apt-get -y install cron
 # Copy cronjobs file to the cron.d directory
 COPY config/cronjobs /etc/cron.d/cronjobs
 
-# Give execution rights on the cron job
-RUN chmod 0755 /etc/cron.d/cronjobs
-
-# Apply cron job
-RUN crontab /etc/cron.d/cronjobs
-
 WORKDIR /
 COPY . /
+
+# Create file for cron logs
+RUN mkdir logs && touch /logs/cron.log
+RUN chmod 0755 /logs/cron.log
+
+# Create file to save env variables for cron jobs
+RUN touch /config/project_env.sh
+RUN chmod 0755 /config/project_env.sh
 
 # Install requirements
 RUN pip install -r requirements.txt
 
-# Start cron
-RUN service cron start
-
-WORKDIR /app
-
-# Start Celery worker
-CMD ["celery", "worker", "--app=worker.app", "--loglevel=INFO"]
+RUN chmod +x /config/entrypoint.sh
+CMD ["/config/entrypoint.sh"]
