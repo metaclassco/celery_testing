@@ -26,4 +26,5 @@ To test Slack notifications on worker failure you can do next:
   ```shell script
   unset TEST_FAILURE
   ```
-  
+
+To checking usage of server resources, to `cronjobs` added related Python script.
