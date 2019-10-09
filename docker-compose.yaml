@@ -5,6 +5,8 @@ services:
     build: .
     environment:
       - CELERY_BROKER_URL=amqp://guest:guest@rabbitmq:5672
+      - SLACK_TOKEN=${SLACK_TOKEN}
+      - TEST_FAILURE=${TEST_FAILURE:-false}
     depends_on:
       - rabbitmq
     restart: 'no'
