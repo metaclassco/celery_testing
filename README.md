@@ -15,15 +15,15 @@ and run with
 docker-compose up  # or docker-compose up -d
 ```
 
-To test Slack notifications on worker fail you can do next:
+To test Slack notifications on worker failure you can do next:
 - go to running container with `docker-compose exec worker bash` and stop Celery in it;
 - build container without started Celery worker:
   ```shell script
   export TEST_FAILURE=true
   docker-compose build
   ```
-
-To build initial container you need to call 
-```shell script
-unset TEST_FAILURE
-```
+  To build initial container you need to call 
+  ```shell script
+  unset TEST_FAILURE
+  ```
+  
