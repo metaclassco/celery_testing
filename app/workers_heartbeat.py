@@ -1,5 +1,3 @@
-import os
-
 import psutil
 
 from utils import is_process_running, send_slack_message
